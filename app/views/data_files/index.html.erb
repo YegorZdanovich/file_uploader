@@ -1,0 +1,18 @@
+<h3> Welcome to file uploader </h3>
+
+<% if user_signed_in? %>
+  <%=link_to "Add File", new_data_file_path, :class => "btn btn-primary" %>
+
+  <table class="table table-striped">
+    <tr>
+      <th>File name</th>
+      <th>Creation time</th>
+      <th>Download option</th>
+      <th>Delete option</th>
+    </tr>
+    <%= render partial: "file", collection: @files %>
+  </table>
+
+<% else %>
+  <h5> Please, log in or sign up </h5>
+<% end %>

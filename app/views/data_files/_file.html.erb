@@ -1,0 +1,12 @@
+<tr>
+  <td><%= File.basename(file.file.path) %></td>
+  <td><%= file.created_at.to_time.strftime("%H:%M:%S %d-%m-%Y") %></td>
+  <td><%= button_to "Download", download_file_data_file_path(file), :class => "btn btn-success" %></td>
+
+  <% if current_user.id == file.user_id %>
+    <td><%= link_to "Delete file", data_file_path(file), :class =>"btn btn-danger",
+                method: :delete, data: {confirm: "Are you sure?"}%></td>
+  <% else %>
+    <td> Permission denied </td>
+  <% end %>
+</tr>

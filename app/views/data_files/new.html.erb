@@ -1,0 +1,7 @@
+<%= form_for @file do |f| %>
+
+  <%= f.label :file %>
+  <%= f.file_field :file %>
+
+  <%= f.submit "Add File", :class => "btn btn-primary"  %>
+<% end %>

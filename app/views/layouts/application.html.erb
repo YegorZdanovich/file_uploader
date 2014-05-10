@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FileUploader2</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <ul class="nav">
+      <li> <p class="navbar-text" style="font-size:20px">File Uploader</p></li>
+      <li class="divider-vertical"></li>
+      <li><%= link_to  "Home", root_path %></li>
+      <li class="divider-vertical"></li>
+
+      <% if user_signed_in? %>
+
+      <li> <p class="navbar-text"><b>Signed in as </b><%= current_user.email%> </p></li>
+        <li class="divider-vertical"></li>
+        <li><%= link_to "exit", destroy_user_session_path, method: :delete %></li>
+        <li class="divider-vertical"></li>
+
+      <% else %>
+
+        <li><%= link_to "Log in", new_user_session_path %></li>
+        <li class="divider-vertical"></li>
+        <li><%= link_to "Sign up", new_user_registration_path %></li>
+        <li class="divider-vertical"></li>
+      <% end %>
+
+    </ul>
+  </div>
+</div>
+
+<% flash.each do |name, msg|%>
+  <div class="alert alert-<%= name == :notice ? "success" : "error"%>">
+    <%= msg %>
+  </div>
+<% end %>
+<%= yield %>
+
+</body>
+</html>
